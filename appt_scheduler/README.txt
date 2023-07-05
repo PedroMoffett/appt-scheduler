@@ -1,5 +1,5 @@
-This application all related files were constructed and formatted to conspicuously satisfy the requirements listed in the rubric, intended to include all necessary configurations to be ran on the evaluator's standardized VM environment.
-
+This application and all associated files have been meticulously developed and formatted to explicitly meet the requirements specified in the rubric.
+They have been designed to include all essential configurations to ensure compatibility with the evaluator's standardized VM environment.
 
 
 TITLE AND PURPOSE OF APPLICATION:
@@ -16,9 +16,9 @@ APPLICATION VERSION: v1.0
 DATE: 07/05/2022
 
 
-IDE: IntelliJ IDEA 2023.1 (Community Edition)
-JDK: Runtime version: 17.0.6+10-b829.5 aarch64
-JAVAFX VERSION: JavaFX-SDK-17.0.1
+IDE: IntelliJ IDEA 2022.1 (Community Edition)
+JDK: Runtime version: jdk-17_windows-x64_bin
+JAVAFX VERSION: openjfx-17.0.6_windows-x64_bin-sdk
 
 
 DIRECTIONS TO RUN PROGRAM:
