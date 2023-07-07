@@ -1,0 +1,17 @@
+2023-07-01 13-00-01 -- User sqlUser -- Unsuccessful login.
+2023-07-01 13-00-04 -- User sqlUser -- Unsuccessful login.
+2023-07-01 13-06-02 -- User  -- Unsuccessful login.
+2023-07-01 13-06-11 -- User sqlUser -- Unsuccessful login.
+2023-07-01 13-06-46 -- User userName -- Unsuccessful login.
+2023-07-01 13-07-01 -- User userName -- Unsuccessful login.
+2023-07-01 13-08-40 -- User sqlUser -- Successful login.
+2023-07-01 20-48-29 -- User sqlUser -- Successful login.
+2023-07-03 12-29-39 -- User sqlUser -- Successful login.
+2023-07-03 12-36-08 -- User sqlUser -- Successful login.
+2023-07-04 14-53-03 -- User sqlUser -- Successful login.
+2023-07-04 14-55-43 -- User sqlUser -- Successful login.
+2023-07-05 08-46-16 -- User sqlUser -- Successful login.
+2023-07-05 08-52-47 -- User sqlUser -- Successful login.
+2023-07-05 08-59-02 -- User sqlUser -- Successful login.
+2023-07-07 10-06-17 -- User sqlUser -- Successful login.
+2023-07-07 10-07-44 -- User sqlUser -- Successful login.
