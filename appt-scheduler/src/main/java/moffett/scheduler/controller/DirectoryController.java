@@ -3,6 +3,7 @@ package moffett.scheduler.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -389,4 +390,29 @@ public class DirectoryController implements Initializable {
         JDBC.closeConnection();}
     }
 
+
+    @FXML
+    private TextField searchCustomerTextField;
+    @FXML
+    public void onSearchCustomer(ActionEvent actionEvent) {
+        String searchText = searchCustomerTextField.getText();
+
+        ObservableList<Customer> customers = FXCollections.observableArrayList();
+
+        if (searchText.isEmpty()) {
+            customers.addAll(Customer.getAllCustomers());
+        } else {
+            customers.addAll(Customer.lookupCustomer(Integer.parseInt(searchText)));
+        }
+
+        if (customers.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("No Match");
+            alert.setContentText("No customer matches found.");
+            alert.showAndWait();
+        }
+
+        customerTableView.setItems(customers);
+    }
 }
