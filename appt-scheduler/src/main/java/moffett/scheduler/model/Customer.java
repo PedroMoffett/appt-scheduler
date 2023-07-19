@@ -38,22 +38,6 @@ public class Customer {
         this.divisionLocation = Queries.selectRegion(divisionID);
     }
 
-    public static ObservableList<Customer> getAllCustomers(){
-        ObservableList<Customer> allCustomers = null;
-        return allCustomers;
-    }
-
-    public static Customer lookupCustomer(int customerID){
-        ObservableList<Customer> Customer = Customer.getAllCustomers();
-
-        for (Customer search: Customer){
-            if(search.getCustomerID() == customerID){
-                return search;
-            }
-        }
-
-        return null;
-    }
 
     /**
      * Getters and Setters

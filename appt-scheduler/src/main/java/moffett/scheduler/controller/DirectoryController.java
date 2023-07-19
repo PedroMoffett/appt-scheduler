@@ -164,6 +164,9 @@ public class DirectoryController implements Initializable {
     @FXML
     private TableColumn<Appointment, Integer> apptUserIDColumn;
 
+    @FXML
+    private TextField searchCustomerTextField;
+
     /**
      * Method populates the customerTableView with Customer objects
      * created from query method, called within initialize.
@@ -391,8 +394,7 @@ public class DirectoryController implements Initializable {
     }
 
 
-    @FXML
-    private TextField searchCustomerTextField;
+
     @FXML
     public void onSearchCustomer(ActionEvent actionEvent) {
         String searchText = searchCustomerTextField.getText();
