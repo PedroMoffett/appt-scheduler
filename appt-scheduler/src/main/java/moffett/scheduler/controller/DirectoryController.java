@@ -72,7 +72,7 @@ public class DirectoryController implements Initializable {
         apptUserIDColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentUserID"));
 
         try {
-            populateCustomersTableView(customerTableView);
+           populateCustomersTableView(customerTableView);
             populateAppointmentsTableView(appointmentTableView);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -170,17 +170,15 @@ public class DirectoryController implements Initializable {
     /**
      * Method populates the customerTableView with Customer objects
      * created from query method, called within initialize.
-     * @param tableView the tableView that the results will be put in.
      * @throws SQLException
      */
-    public void populateCustomersTableView(TableView<Customer> tableView) throws SQLException {
+    public void populateCustomersTableView(TableView<Customer> customerTableView) throws SQLException {
+        ObservableList<Customer> list = FXCollections.observableArrayList();
 
         String sql = "SELECT Customer_ID, Customer_Name, Address, Postal_Code, Phone, Division_ID FROM CUSTOMERS";
 
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-
-        tableView.getItems().clear();
 
         while (rs.next()) {
             Customer customer = new Customer(
@@ -191,8 +189,9 @@ public class DirectoryController implements Initializable {
                     rs.getString("Phone"),
                     rs.getInt("Division_ID")
             );
-            tableView.getItems().add(customer);
+            list.add(customer);
         }
+        this.customerTableView.setItems(list);
     }
 
     /**
@@ -396,15 +395,19 @@ public class DirectoryController implements Initializable {
 
 
     @FXML
-    public void onSearchCustomer(ActionEvent actionEvent) {
+    public void onSearchCustomer(ActionEvent actionEvent) throws SQLException {
         String searchText = searchCustomerTextField.getText();
 
         ObservableList<Customer> customers = FXCollections.observableArrayList();
 
         if (searchText.isEmpty()) {
-            customers.addAll(Customer.getAllCustomers());
+           populateCustomersTableView(customerTableView);
         } else {
-            customers.addAll(Customer.lookupCustomer(Integer.parseInt(searchText)));
+            try {
+                customers = FXCollections.observableArrayList(Queries.lookupCustomerID(Integer.parseInt(searchText)));
+            } catch (NumberFormatException e) {
+                customers.addAll(Queries.lookupCustomerID(Integer.parseInt(searchText)));
+            }
         }
 
         if (customers.isEmpty()) {
@@ -418,3 +421,4 @@ public class DirectoryController implements Initializable {
         customerTableView.setItems(customers);
     }
 }
+//Chapter 6, 7, and 9.

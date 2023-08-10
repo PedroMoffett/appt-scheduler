@@ -2,6 +2,7 @@ package moffett.scheduler.helper;
 
 import javafx.fxml.FXML;
 import moffett.scheduler.model.Appointment;
+import moffett.scheduler.model.Customer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -198,6 +199,52 @@ public abstract class Queries {
             custIDList.add(ID);
         }
         return custIDList;
+    }
+
+    public static ArrayList<Customer> lookupCustomerID(int customerID) throws SQLException{
+        String sql = "SELECT Customer_ID, Customer_Name, Address, Postal_Code, Phone, Division_ID FROM CUSTOMERS WHERE CUSTOMER_ID = ?";
+
+        ArrayList<Customer> list = new ArrayList<Customer>();
+
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, customerID);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Customer customer = new Customer(
+                    rs.getInt("Customer_ID"),
+                    rs.getString("Customer_Name"),
+                    rs.getString("Address"),
+                    rs.getString("Postal_Code"),
+                    rs.getString("Phone"),
+                    rs.getInt("Division_ID")
+            );
+            list.add(customer);
+        }
+        return list;
+    }
+
+    public static ArrayList<Customer> lookupCustomer(String name) throws SQLException{
+        String sql = "SELECT Customer_ID, Customer_Name, Address, Postal_Code, Phone, Division_ID FROM CUSTOMERS WHERE CUSTOMER_NAME LIKE ?";
+
+        ArrayList<Customer> list = new ArrayList<Customer>();
+
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setString(1, name);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Customer customer = new Customer(
+                    rs.getInt("Customer_ID"),
+                    rs.getString("Customer_Name"),
+                    rs.getString("Address"),
+                    rs.getString("Postal_Code"),
+                    rs.getString("Phone"),
+                    rs.getInt("Division_ID")
+            );
+            list.add(customer);
+        }
+        return list;
     }
 
     /**
