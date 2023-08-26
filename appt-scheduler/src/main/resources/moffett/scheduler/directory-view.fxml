@@ -69,6 +69,5 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="searchCustomerTextField" layoutX="785.0" layoutY="16.0" onAction="#onSearchCustomer" promptText="Search..." />
    </children>
 </AnchorPane>
